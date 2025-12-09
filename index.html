@@ -1,0 +1,192 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>太衍天书</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'ink-950': '#0a0a0a',
+              'ink-900': '#111111',
+              'ink-800': '#1c1c1c',
+              'ink-700': '#2a2a2a',
+              'paper-100': '#e5e5e5',
+              'paper-200': '#d4d4d4',
+              'paper-300': '#a3a3a3',
+              'gold-dark': '#713f12',
+              'gold-main': '#a16207',
+              'gold-light': '#ca8a04',
+              'jade-dark': '#14532d',
+              'jade-main': '#15803d',
+              'blood-dark': '#7f1d1d',
+              'blood-main': '#991b1b',
+            },
+            fontFamily: {
+              serif: ['"Songti SC"', '"SimSun"', '"Times New Roman"', 'Times', 'serif'],
+              mono: ['"Courier New"', 'Courier', 'monospace'],
+            },
+            backgroundImage: {
+              'noise': "url('https://www.transparenttextures.com/patterns/stardust.png')",
+            },
+            animation: {
+              'slam': 'focus-slam 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) backwards',
+              'spin-slow': 'spin 60s linear infinite',
+              'spin-reverse-slow': 'spin 80s linear infinite reverse',
+              'float': 'float 6s ease-in-out infinite',
+            },
+            keyframes: {
+              float: {
+                '0%, 100%': { transform: 'translateY(0)' },
+                '50%': { transform: 'translateY(-10px)' },
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body {
+        background-color: #050505;
+        color: #d4d4d4;
+        font-family: 'Songti SC', 'SimSun', serif;
+        /* Disable text selection globally */
+        -webkit-user-select: none; /* Safari */
+        -ms-user-select: none; /* IE 10 and IE 11 */
+        user-select: none; /* Standard syntax */
+        cursor: default;
+      }
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 4px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #0a0a0a; 
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #333; 
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #555; 
+      }
+      
+      .text-shadow-sm {
+        text-shadow: 1px 1px 0 #000;
+      }
+      
+      .writing-vertical {
+        writing-mode: vertical-rl;
+        text-orientation: upright;
+      }
+
+      /* --- VFX Keyframes --- */
+
+      /* Basic Fade In */
+      @keyframes fade-in {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+
+      /* Fade In Up */
+      @keyframes fade-in-up {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      /* Focus/Embed Effect: Large scale phantom to normal */
+      @keyframes focus-slam {
+        0% {
+          opacity: 0;
+          transform: scale(3);
+          filter: blur(8px);
+        }
+        50% {
+          opacity: 0.8;
+        }
+        100% {
+          opacity: 1;
+          transform: scale(1);
+          filter: blur(0);
+        }
+      }
+
+      /* Horizontal Shake (Impact) - UPDATED: Subtler Vibration */
+      @keyframes shake-horizontal {
+        0%, 100% { transform: translate(0, 0); }
+        10% { transform: translate(-1px, 1px); }
+        30% { transform: translate(1px, -1px); }
+        50% { transform: translate(-2px, 0px); }
+        70% { transform: translate(1px, 1px); }
+        90% { transform: translate(0px, -1px); }
+      }
+
+      /* Gentle Pulse for Gold */
+      @keyframes pulse-gold {
+        0%, 100% { box-shadow: 0 0 10px rgba(251, 191, 36, 0.2); }
+        50% { box-shadow: 0 0 20px rgba(251, 191, 36, 0.5); }
+      }
+
+      /* Breathing Red */
+      @keyframes breathe-red {
+        0%, 100% { box-shadow: 0 0 10px rgba(220, 38, 38, 0.3); border-color: #7f1d1d; }
+        50% { box-shadow: 0 0 25px rgba(239, 68, 68, 0.6); border-color: #991b1b; }
+      }
+
+      /* Particle Explode - Higher visibility */
+      @keyframes particle-explode {
+        0% {
+          opacity: 1;
+          transform: translate(-50%, -50%) scale(1.2);
+        }
+        100% {
+          opacity: 0;
+          transform: translate(calc(-50% + var(--tx)), calc(-50% + var(--ty))) scale(0.2);
+        }
+      }
+
+      /* Shockwave - Expands from card border outwards */
+      @keyframes shockwave-expand {
+        0% {
+          opacity: 0.8;
+          transform: scale(1);
+          border-width: 2px;
+        }
+        100% {
+          opacity: 0;
+          transform: scale(1.8);
+          border-width: 0px;
+        }
+      }
+
+      /* Screen Flash */
+      @keyframes flash-overlay {
+        0% { opacity: 0; }
+        10% { opacity: 0.3; }
+        100% { opacity: 0; }
+      }
+
+    </style>
+
+<link rel="stylesheet" href="/index.css">
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://aistudiocdn.com/react@^19.2.1",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.1/",
+    "react/": "https://aistudiocdn.com/react@^19.2.1/",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.556.0",
+    "recharts": "https://aistudiocdn.com/recharts@^3.5.1",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.32.0"
+  }
+}
+</script>
+  <script type="module" crossorigin src="/assets/index-IDwcku04.js"></script>
+</head>
+  <body>
+    <div id="root"></div>
+</body>
+</html>
